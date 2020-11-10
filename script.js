@@ -75,7 +75,7 @@ function startGame()
         {       
             countdown = 0;
             clearInterval(startCountdown);
-            countdownBoard.textContent = "Time ran out! You did well!"
+            countdownBoard.textContent = "NONE!"
         }
     }, 1000)
 }
