@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body 
+{
+    font-family: 'Helvetica';
+}
+
+.wrapper
+{
+    border: 3px solid rgb(87, 26, 18);
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('background.png');
+    overflow: hidden;
+}
+
+.score
+{
+    font-size: 100px;
+    color: rgb(87, 26, 18);
+    position: absolute;
+    top: 88%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    /*border: solid 1px black; */
+    width: 200px;
+    height: 100px;
+    text-align: center;
+}
+.scoreText
+{
+    font-size: 80px;
+    color: rgb(87, 26, 18);
+    position: absolute;
+    top: 90%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    /*border: solid 1px black; */
+    width: 200px;
+    height: 100px;
+    text-align: center;
+}
+.countdown
+{
+    position: absolute;
+    top: 490px;
+    width: 35%;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(87, 26, 18);
+
+}
+.countdownText
+{
+    position: absolute;
+    top: 490px;
+    width: 20%;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(87, 26, 18);
+}
+
+.startButton
+{
+    position: absolute;
+    bottom: 10px;
+    left: 12%;
+    transform: translate(-50%, 0);
+    background-color: rgb(87, 26, 18);
+    color: white;
+    padding: 20px 50px;
+    border-radius: 5px;
+    z-index: 200;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.game
+{
+    width: 600px;
+    height: 400px;
+    margin: 70px auto;
+    z-index: 200;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hole
+{
+    overflow: hidden;
+    flex: 1 0 33%;
+    position: relative;
+}
+
+.hole:after
+{
+    content: '';
+    display: block;
+    background-image: url('table1.png');
+    position: absolute;
+    width: 100%;
+    height: 160px;
+    z-index: 2;
+    bottom: -100px;
+    background-size: contain;
+}
+
+.mole
+{
+    background-image: url('korman1.png');
+    position: absolute;
+    top: 100%;
+    left: 12.5%;
+    width: 75%;
+    height: 60%;
+    transition: 0.2s;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.mole.small
+{
+    background-size: 50%;
+}
+.mole.large
+{
+    background-size: 50%;
+}
+.hole.up .mole
+{
+    top: 10%;
+}
+/*.hole.normal .mole
+{
+    background-image: url('yoda1.png'); 
+}
+.hole.gold .mole
+{
+    background-image: url('Gyoda1.png');
+}*/ 
+
+/*  those two classes above were the attempt at making the yoda appear golden even when it pops out.  
+    But it was too complicated for me to figure out how to make it properly work throught the game, since some yodas were appearing normal but actually were golden,
+    while others were appearing golden but actually being normal.  The functionality of the golden yodas works perfectly fine, they just will appear as normal ones that
+    evade the user much quicker.  Once clicked on, they will shine golden and give 5 points. */
