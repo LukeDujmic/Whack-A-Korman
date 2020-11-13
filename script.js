@@ -11,6 +11,7 @@ let timeLimit = 60000;      //the time limit you get during a round
 let score = 0;              //the score will go up by 1 per yoda 
 let countdown;              //countdown timer variable
 let isGolden = false;       //boolean that checks if a yoda will be golden or not (golden yodas will give +5 points)
+let gameStarted = false;
 
 function pickRandomHole(holes)
 {
@@ -56,28 +57,34 @@ function popOut()
 }
 function startGame()
 {
-    countdown = timeLimit/1000;         //resets variables when the Start Game button is pressed
-    scoreBoard.textContent = 0;
-    scoreBoard.getElementsByClassName.display = "block";
-    countdownBoard.textContent = countdown;         //displaying the variable as text in HTML
-    timeUp = false;
-    score = 0;
-    isGolden = false;
-    popOut();       
-    setTimeout(function(){          //after the amount of time in the timeLimit variable is used, timeUp will be set to true, which will activate conditions to end the game in other functions
-        timeUp = true;
-    }, timeLimit)
+    if (gameStarted == false)
+    {
+        gameStarted = true;
+        countdown = timeLimit/1000;         //resets variables when the Start Game button is pressed
+        scoreBoard.textContent = 0;
+        scoreBoard.getElementsByClassName.display = "block";
+        countdownBoard.textContent = countdown;         //displaying the variable as text in HTML
+        timeUp = false;
+        score = 0;
+        isGolden = false;
+        popOut();       
+        setTimeout(function(){          //after the amount of time in the timeLimit variable is used, timeUp will be set to true, which will activate conditions to end the game in other functions
+            timeUp = true;
+            gameStarted = false;
+        }, timeLimit)
+    
+        let startCountdown = setInterval(function(){        // countdown variable decreases by 1 every second, and is displayed on HTML
+            countdown -= 1;
+            countdownBoard.textContent = countdown;
+            if (countdown < 0)          // when the countdown reaches 0, the game ends and the interval is removed for next game
+            {       
+                countdown = 0;
+                clearInterval(startCountdown);
+                countdownBoard.textContent = "NONE!"
+            }
+        }, 1000)
+    }
 
-    let startCountdown = setInterval(function(){        // countdown variable decreases by 1 every second, and is displayed on HTML
-        countdown -= 1;
-        countdownBoard.textContent = countdown;
-        if (countdown < 0)          // when the countdown reaches 0, the game ends and the interval is removed for next game
-        {       
-            countdown = 0;
-            clearInterval(startCountdown);
-            countdownBoard.textContent = "NONE!"
-        }
-    }, 1000)
 }
 startButton.addEventListener("click", startGame); // add a function when the start button is clicked
 
